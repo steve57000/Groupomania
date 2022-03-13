@@ -126,8 +126,8 @@ $lineargradient: linear-gradient(
     rgba(20, 20, 20, 1),
     rgba(171, 164, 164, 1) 70.71%
   ),
-  linear-gradient(127deg, rgba(77, 75, 75, 1), rgba(94, 91, 91) 70.71%),
-  linear-gradient(336deg, rgba(59, 52, 52, 1), rgba(84, 77, 77) 70.71%);
+  linear-gradient(127deg, rgba(77, 75, 75, 1), rgba(94, 91, 91, 1) 70.71%),
+  linear-gradient(336deg, rgba(59, 52, 52, 1), rgba(84, 77, 77, 1) 70.71%);
 $conicGradient: conic-gradient(
   at -30% 50%,
   rgba(59, 52, 52, 0.85) 18%,
