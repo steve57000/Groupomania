@@ -117,17 +117,17 @@
 </template>
 
 <style lang="scss">
-$shadowBlue: rgba(234, 184, 96);
-$shadowGrey: rgba(16, 12, 16);
+$shadowBlue: rgb(234, 184, 96);
+$shadowGrey: rgb(16, 12, 16);
 $shadowBox: 0 0 20px 0 $shadowGrey;
 $shadowBoxHover: 0 0 20px 1px $shadowBlue;
 $lineargradient: linear-gradient(
     217deg,
-    rgba(20, 20, 20),
-    rgba(171, 164, 164) 70.71%
+    rgba(20, 20, 20, 1),
+    rgba(171, 164, 164, 1) 70.71%
   ),
-  linear-gradient(127deg, rgba(77, 75, 75), rgba(94, 91, 91) 70.71%),
-  linear-gradient(336deg, rgba(59, 52, 52), rgba(84, 77, 77) 70.71%);
+  linear-gradient(127deg, rgba(77, 75, 75, 1), rgba(94, 91, 91) 70.71%),
+  linear-gradient(336deg, rgba(59, 52, 52, 1), rgba(84, 77, 77) 70.71%);
 $conicGradient: conic-gradient(
   at -30% 50%,
   rgba(59, 52, 52, 0.85) 18%,
@@ -139,7 +139,7 @@ h1 {
   font-family: "Gill Sans", sans-serif;
   font-size: 1.6em;
   color: white;
-  text-shadow: 0 0 10px rgba(0, 0, 0.61);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.61);
   padding-top: 10px;
 }
 
@@ -147,85 +147,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.nav-link {
-  display: flex;
-  flex-direction: row;
-}
-.inputsearch {
-  background-color: #f0f2f5;
-  border-radius: 20px;
-  text-align: center;
-}
-.nameSearch {
-  text-decoration: none;
-  color: rgba(229, 223, 223, 0.61);
-}
-a:link {
-  text-decoration: none;
-}
-.imgSearch {
-  object-fit: cover;
-  height: 45px;
-  width: 45px;
-  margin: 10px;
-  border-radius: 100%;
-}
-.results {
-  position: absolute;
-}
-.result {
-  width: 221px;
-  border: 1px solid #dbdbdb;
-  background-color: white;
   &:hover {
-    background-color: #90b3d6;
-  }
-}
-.navigation {
-  min-height: 64px;
-}
-nav ul li:hover {
-  transition: 0.3s;
-  transform: scale(1.1);
-}
-.userPageLink {
-  object-fit: cover;
-  height: 40px;
-  width: 40px;
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-right: 40px;
-  border-radius: 100%;
-}
-
-.signup {
-  box-sizing: content-box;
-  background: $conicGradient;
-}
-.homeLinkBig {
-  width: 41px;
-  margin-right: 10px;
-  transition: transform 2s;
-}
-.homeLinkBig:hover {
-  transform: rotate3d(1, 2.5, 1.5, 360deg);
-}
-
-.setting {
-  height: 32px;
-}
-.logout {
-  height: 30px;
-  width: 80px;
-}
-.navbar {
-  background: $lineargradient;
-  height: auto;
-  box-shadow: 0 0 15px 0 rgba(239, 229, 229, 0.61);
-  transition: width 1s, height 1s, background-color 1s, transform 1s;
-  &:hover {
-    box-shadow: $shadowBoxHover;
     span {
       opacity: 0;
     }
@@ -273,6 +195,99 @@ nav ul li:hover {
       animation: letters 2s ease 100ms forwards;
       text-shadow: 0 0 20px white;
     }
+  }
+}
+.nav-link {
+  display: flex;
+  flex-direction: row;
+}
+.inputsearch {
+  background: $lineargradient;
+  color: white;
+  border-radius: 20px;
+  border-color: darkgray;
+  text-align: center;
+  &:focus {
+    color: white;
+    border-color: darkgray;
+  }
+}
+.form-control:focus {
+  box-shadow: $shadowBoxHover;
+}
+.nameSearch {
+  text-decoration: none;
+  color: white;
+}
+a:link {
+  text-decoration: none;
+}
+.imgSearch {
+  object-fit: cover;
+  height: 45px;
+  width: 45px;
+  margin: 10px;
+  border-radius: 100%;
+}
+.results {
+  position: absolute;
+}
+.result {
+  width: 221px;
+  border: 1px solid #dbdbdb;
+  border-radius: 20px;
+  background: $lineargradient;
+  margin-top: 5px;
+  box-shadow: $shadowBox;
+  &:hover {
+    background-color: #90b3d6;
+    box-shadow: $shadowBoxHover;
+  }
+}
+.navigation {
+  min-height: 64px;
+}
+nav ul li:hover {
+  transition: 0.3s;
+  transform: scale(1.1);
+}
+.userPageLink {
+  object-fit: cover;
+  height: 40px;
+  width: 40px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 40px;
+  border-radius: 100%;
+}
+
+.signup {
+  box-sizing: content-box;
+  background: $conicGradient;
+}
+.homeLinkBig {
+  width: 41px;
+  margin-right: 10px;
+  transition: transform 2s;
+}
+.homeLinkBig:hover {
+  transform: rotate3d(1, 2.5, 1.5, 360deg);
+}
+
+.setting {
+  height: 32px;
+}
+.logout {
+  height: 30px;
+  width: 80px;
+}
+.navbar {
+  background: $lineargradient;
+  height: auto;
+  box-shadow: 0 0 15px 0 rgba(239, 229, 229, 0.61);
+  transition: width 1s, height 1s, background-color 1s, transform 1s;
+  &:hover {
+    box-shadow: $shadowBoxHover;
   }
 }
 @keyframes letters {

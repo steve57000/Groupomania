@@ -64,7 +64,7 @@
           <input
             v-if="mode == 'signup'"
             type="password"
-            id="password"
+            class="password"
             name="login"
             placeholder="password"
             required
@@ -114,18 +114,15 @@
 </template>
 
 <style lang="scss" scoped>
-$shadowBlue: rgba(234, 184, 96);
-$shadowGrey: rgba(16, 12, 16);
-$shadowBox: 0 0 20px 0 $shadowGrey;
-$shadowBoxHover: 0 0 20px 1px $shadowBlue;
+@import "../assets/css/variableColor.scss";
 
 .red {
-  color: red;
+  color: $colorError;
   padding: 0;
   margin: 0;
 }
 .error {
-  color: red;
+  color: $colorError;
   margin-top: -30px;
 }
 a {
@@ -142,7 +139,7 @@ h2 {
   text-transform: uppercase;
   display: inline-block;
   margin: 40px 8px 10px 8px;
-  color: #cccccc;
+  color: $colorError;
 }
 
 /* STRUCTURE */
@@ -186,7 +183,7 @@ h2 {
 /* TABS */
 
 h2.inactive {
-  color: #cccccc;
+  color: $colorTxt;
 }
 
 h2.active {
@@ -201,7 +198,7 @@ input[type="submit"],
 input[type="reset"] {
   background-color: #56baed;
   border: none;
-  color: white;
+  color: $colorTxt;
   padding: 15px 80px;
   text-align: center;
   text-decoration: none;
@@ -263,7 +260,7 @@ input[type="text"]:focus {
 }
 
 input[type="text"]::placeholder {
-  color: #cccccc;
+  color: $colorTxt;
 }
 
 .fadeInDown {
@@ -377,7 +374,7 @@ input[type="text"]::placeholder {
 }
 
 .underlineHover:hover {
-  color: #0d0d0d;
+  color: #313131;
   cursor: none;
 }
 

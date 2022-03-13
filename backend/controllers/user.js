@@ -113,7 +113,9 @@ exports.modifyPassword = (req, res, next) => {
                     } else {
                         bcrypt.hash(req.body.password, 10)
                             .then(hash => {
-                                let sql2 = `UPDATE user SET password= ? WHERE id = ?;`;
+                                let sql2 = `UPDATE user
+                                SET password= ?
+                                WHERE id = ?;`;
                                 pool.execute(sql2, [hash, req.params.id], function (err, result) {
                                     if (err) throw err;
                                     res.status(200).json({ message: "Mot de passe modifié" })
@@ -129,7 +131,9 @@ exports.modifyPassword = (req, res, next) => {
 
 exports.modifAccount = (req, res, next) => {
     if (req.body.nom != "") {
-        let sql2 = `UPDATE user SET nom= ? WHERE id = ?`;
+        let sql2 = `UPDATE user
+                SET nom= ?
+                WHERE id = ?`;
         pool.execute(sql2, [req.body.nom, req.params.id], function (err, result) {
             if (err) throw err;
         });
@@ -142,7 +146,9 @@ exports.modifAccount = (req, res, next) => {
         });
     }
     if (req.body.prenom != "") {
-        let sql2 = `UPDATE user SET prenom= ? WHERE id = ?;`;
+        let sql2 = `UPDATE user
+                SET prenom= ?
+                WHERE id = ?;`;
         pool.execute(sql2, [req.body.prenom, req.params.id], function (err, result) {
             if (err) throw err;
         });
@@ -168,7 +174,9 @@ exports.modifyPP = (req, res, next) => {
                 // RECUPERE LES INFOS ENVOYER PAR LE FRONT 
                 let image = (req.file) ? `${req.protocol}://${req.get('host')}/images/profile/${req.file.filename}` : "";
                 // UPDATE LA DB
-                let sql2 = `UPDATE user SET pp = ? WHERE id = ?`;
+                let sql2 = `UPDATE user
+                SET pp = ?
+                WHERE id = ?`;
                 pool.execute(sql2, [image, req.params.id], function (err, result) {
                     if (err) throw err;
                     res.status(201).json({ message: `Photo user udpate` });
