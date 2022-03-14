@@ -1,3 +1,4 @@
+<!-- eslint-disable -->
 <template>
   <div class="signup">
     <div class="wrapper fadeInDown">
@@ -112,7 +113,7 @@
     </div>
   </div>
 </template>
-
+<!-- eslint-disable -->
 <style lang="scss" scoped>
 @import "../assets/css/variableColor.scss";
 
@@ -382,7 +383,7 @@ input[type="text"]::placeholder {
   width: 100%;
 }
 </style>
-
+<!-- eslint-disable -->
 <script>
 import axios from "axios";
 const CryptoJS = require("crypto-js");

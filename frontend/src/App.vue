@@ -1,3 +1,4 @@
+<!-- eslint-disable -->
 <template>
   <header>
     <div class="navigation">
@@ -115,7 +116,7 @@
   </header>
   <router-view :key="$route.fullPath" />
 </template>
-
+<!-- eslint-disable -->
 <style lang="scss">
 $shadowBlue: rgb(234, 184, 96);
 $shadowGrey: rgb(16, 12, 16);
@@ -378,7 +379,7 @@ body {
   }
 }
 </style>
-
+<!-- eslint-disable -->
 <script>
 import axios from "axios";
 const CryptoJS = require("crypto-js");

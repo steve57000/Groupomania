@@ -1,3 +1,4 @@
+<!-- eslint-disable -->
 <template>
   <div class="container">
     <div class="delete" v-if="deleteAccount">
@@ -115,7 +116,7 @@
     </div>
   </div>
 </template>
-
+<!-- eslint-disable -->
 <script>
 import axios from "axios";
 const CryptoJS = require("crypto-js");
@@ -286,7 +287,7 @@ export default {
   },
 };
 </script>
-
+<!-- eslint-disable -->
 <style lang="scss" scoped>
 @import "../assets/css/settings.scss";
 </style>

@@ -1,3 +1,4 @@
+<!-- eslint-disable -->
 <template>
   <div class="home">
     <div class="container">
@@ -204,11 +205,11 @@
     </div>
   </div>
 </template>
-
+<!-- eslint-disable -->
 <style lang="scss" scoped>
 @import "../assets/css/user.scss";
 </style>
-
+<!-- eslint-disable -->
 <script>
 import axios from "axios";
 const CryptoJS = require("crypto-js");

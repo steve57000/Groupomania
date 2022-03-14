@@ -1,3 +1,4 @@
+<!-- eslint-disable -->
 <template>
   <router-view>
     <div class="d-flex justify-content-center newPost">
@@ -202,7 +203,7 @@
     </div>
   </router-view>
 </template>
-
+<!-- eslint-disable -->
 <script>
 import axios from "axios";
 const CryptoJS = require("crypto-js");
@@ -477,7 +478,7 @@ export default {
   },
 };
 </script>
-
+<!-- eslint-disable -->
 <style lang="scss" scoped>
 @import "../assets/css/post.scss";
 </style>
