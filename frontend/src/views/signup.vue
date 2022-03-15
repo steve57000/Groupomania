@@ -39,6 +39,7 @@
           </p>
           <input
             v-if="mode == 'signup'"
+            v-model="spanName"
             type="text"
             id="prenom"
             name="prenom"
@@ -107,7 +108,7 @@
           <p>Email ou mot de passe incorrect</p>
         </div>
         <div id="formFooter">
-          <p class="underlineHover" href="#">Bienvenue !</p>
+          <p class="underlineHover">Bienvenue <span id="spanName">{{ spanName }}</span> ! </p>
         </div>
       </div>
     </div>
@@ -136,6 +137,7 @@ export default {
       prenom: "",
       errorPrenom: false,
       incorrect: false,
+      spanName: "",
     };
   },
   methods: {
