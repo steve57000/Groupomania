@@ -152,7 +152,6 @@ export default {
       this.password = document.querySelector(".password")
         ? document.querySelector(".password").value
         : null;
-      console.log(this.password);
       const self = this;
       axios
         .delete(
@@ -168,7 +167,7 @@ export default {
           console.log(response);
           document.cookie = "userId=";
           document.cookie = "user-token=";
-          self.$router.go("/");
+          self.$router.go("");
         })
         .catch(function (error) {
           self.errorMdp = true;

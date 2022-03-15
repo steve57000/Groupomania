@@ -1,4 +1,7 @@
-$colorError: rgba(193, 78, 78, 1);
+$backgroundCardColor: conic-gradient(at -30% 50%, rgba(59, 52, 52, 0.85) 18%, rgba(77, 75, 75, 0.5) 30%, rgba(20, 20, 20, 0.85) 40%);;
+$colorError: rgb(219, 44, 44);
+$colorTxtInactive: rgb(105, 97, 97);
+$colorBackgroundTxtActive:  rgba(234, 184, 96, 0.6);
 $colorTxt: rgba(204, 204, 204, 1);
 $shadowGrey: rgba(16, 12, 16, 1);
 $shadowBox: 0 0 20px 0 rgba(16, 12, 16, 1);
