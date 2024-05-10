@@ -11,6 +11,7 @@
 import Post from "@/components/post.vue";
 
 export default {
+  // eslint-disable-next-line vue/multi-word-component-names
   name: "Home",
   components: {
     Post,
