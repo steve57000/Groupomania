@@ -1,4 +1,7 @@
+/* Import des variables */
 @import "variableColor.scss";
+
+/* Styles pour le texte indiquant l'absence de posts */
 .text-noPost {
   text-align: center;
   font-weight: 500;
@@ -6,13 +9,19 @@
   font-size: 20px;
   color: #091f43;
 }
+
+/* Conteneur des posts */
 .noPost {
   width: 500px;
   margin: 100px auto auto;
 }
+
+/* Styles spécifiques aux posts */
 .infopost {
   position: relative;
 }
+
+/* Styles pour le texte */
 .text {
   display: block;
   padding-top: 15px;
@@ -22,6 +31,8 @@
   margin-right: auto;
   color: #091f43;
 }
+
+/* Styles pour les images des posts */
 .imagePost {
   object-fit: cover;
   max-height: 500px;
@@ -29,6 +40,8 @@
   margin: 0;
   padding: 0;
 }
+
+/* Styles pour les réactions */
 .svg-react {
   &:hover {
     fill: #c21e36;
@@ -53,13 +66,16 @@
   cursor: pointer;
   margin-left: auto;
   margin-right: auto;
+
   &__img {
     height: 40px;
   }
 }
+
 .heart {
   animation: heart 0.3s cubic-bezier(0.06, 1.16, 0.83, 0.67);
 }
+
 @keyframes heart {
   0% {
     transform: scale(0.5);
@@ -69,6 +85,7 @@
   }
 }
 
+/* Styles pour les photos de profil des posts */
 .ppPost {
   height: 45px;
   width: 45px;
@@ -76,9 +93,13 @@
   border-radius: 100%;
   object-fit: cover;
 }
+
+/* Styles pour les boutons "Publier" */
 .publier {
   width: 100px;
 }
+
+/* Styles pour la boîte d'ombre */
 .shadow_box {
   box-shadow: $shadowBox;
   &:hover {
@@ -87,6 +108,7 @@
   }
 }
 
+/* Styles pour la section "Home" */
 .home {
   width: 50%;
   padding: 0;
@@ -95,16 +117,19 @@
   margin-bottom: 5px;
 }
 
+/* Styles pour le formulaire */
 .form {
   width: 90%;
 }
 
+/* Styles pour les éléments textuels */
 #text {
   border-radius: 20px;
   background-color: #f0f2f5;
   color: #091f43;
 }
 
+/* Styles pour les nombres */
 .nbr {
   font-weight: 300;
   font-size: 20px;
@@ -112,34 +137,42 @@
   margin-right: 10px;
 }
 
+/* Styles pour les posts lors du survol */
 .posts:hover {
-  .deletePost {
+  .deletePost, .deletePostMessage {
     display: inline;
   }
 }
+
+/* Styles pour le texte en rouge */
+.red {
+  color: red;
+}
+
+/* Styles pour la croix de suppression des posts */
 .deletePost {
-  height: 20px;
+  height: 30px;
   position: absolute;
-  right: 20px;
-  display: none;
+  top: 10px;
+  right: 50px;
   cursor: pointer;
 }
 
-.delete {
-  height: 15px;
+/* Styles pour le message de suppression des posts */
+.deletePostMessage {
   position: absolute;
-  top: 5px;
   right: 10px;
-  display: none;
-  cursor: pointer;
-  margin-left: 20px;
+  top: 50%;
 }
 
+/* Styles pour le texte des commentaires */
 .commentText {
   margin-left: 10px;
   margin-right: 10px;
   color: #091f43;
 }
+
+/* Styles pour l'auteur des commentaires */
 .commentAuthor {
   font-weight: bold;
   margin-left: 10px;
@@ -147,14 +180,20 @@
   padding-top: 10px;
   color: #091f43;
 }
+
+/* Styles pour les commentaires */
 .comment {
   margin: auto;
 }
+
+/* Styles pour le nom de l'utilisateur */
 .nomUser {
   font-weight: bold;
   font-size: 19px;
   color: #091f43;
 }
+
+/* Styles pour les photos de profil */
 .pp {
   object-fit: cover;
   margin-right: 18px;
@@ -169,18 +208,22 @@
   margin-left: 20px;
 }
 
+/* Styles pour les commentaires */
 .comments {
   display: flex;
 }
 
+/* Styles pour les éléments à masquer */
 .disp {
   display: none;
 }
 
+/* Styles pour la taille du texte de l'heure */
 .time {
   font-size: 9px !important;
 }
 
+/* Styles pour les icônes des réseaux sociaux */
 .socials i {
   margin-right: 14px;
   font-size: 17px;
@@ -188,16 +231,13 @@
   cursor: pointer;
 }
 
+/* Styles pour les images dans le feed */
 .feed-image img {
   width: 100%;
   height: auto;
 }
 
-#comment {
-  border-radius: 20px;
-  background-color: #f0f2f5;
-}
-
+/* Styles pour chaque commentaire */
 .commentaire {
   background-color: #f0f2f5;
   border-radius: 20px;
@@ -207,22 +247,21 @@
   padding-top: 10px;
   padding-left: 10px;
   padding-right: 20px;
-  &:hover {
-    .delete {
-      display: block;
-    }
-  }
 }
+
+/* Media queries */
 @media (max-width: 1000px) {
   .home {
     width: 83.5%;
   }
 }
+
 @media (max-width: 764px) {
   .home {
     width: 100%;
   }
 }
+
 @media (max-width: 560px) {
   .home {
     width: 92%;
@@ -234,3 +273,4 @@
     width: 100%;
   }
 }
+

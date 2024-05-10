@@ -1,4 +1,3 @@
-<!-- eslint-disable -->
 <template>
   <router-view>
     <div class="d-flex justify-content-center newPost">
@@ -68,6 +67,7 @@
                     >Posté le {{ formatDate(post.date) }}</span
                   >
                 </div>
+
                 <img
                   class="deletePost"
                   src="../../image/times-solid.svg"
@@ -75,6 +75,13 @@
                   v-if="post.authorId === userId || (user && user.admin)"
                   @click="deletePost(post.postId, post.authorId)"
                 />
+                <span
+                  class="red deletePostMessage"
+                  v-if="post.authorId === userId || (user && user.admin)"
+                  @click="deletePost(post.postId, post.authorId)"
+                >
+                  Supprimer le post
+                </span>
               </div>
             </div>
           </div>
@@ -186,12 +193,12 @@
           </div>
           <div class="col-10 d-flex justify-content-center comment">
             <input
+              v-model="newComment"
               v-on:keyup.enter="comment($event, post.postId)"
-              @change="upload"
               type="text"
               class="form-control mt-3 mb-3"
-              id="comment"
-              aria-describedby="comment"
+              :id="'comment_' + post.postId"
+              :aria-describedby="'comment_' + post.postId"
               placeholder="Ajoutez un commentaire ..."
             />
           </div>
@@ -203,7 +210,7 @@
     </div>
   </router-view>
 </template>
-<!-- eslint-disable -->
+
 <script>
 import axios from "axios";
 const CryptoJS = require("crypto-js");
@@ -239,27 +246,25 @@ export default {
   methods: {
     formatDate(input) {
       const datePart = input.match(/\d+/g),
-        year = datePart[0].substring(2), // get only two digits
+        year = datePart[0].substring(2),
         month = datePart[1],
         day = datePart[2];
       return day + "/" + month + "/" + year;
     },
+
     afficherComment(event) {
-      let path;
-      if (event.path[3].children[3].matches(".react")) {
-        path = event.path[3].children[4];
-      } else {
-        path = event.path[3].children[3];
-      }
-      if (path.matches(".disp")) {
-        path.classList.remove("disp");
-      } else {
-        path.classList.add("disp");
+      const commentSection = event.target
+        .closest(".posts")
+        .querySelector(".block-com");
+      if (commentSection) {
+        commentSection.classList.toggle("disp");
       }
     },
+
     upload2(event) {
       this.image = event.target.files[0];
     },
+
     addPost() {
       this.token = document.cookie
         .split("; ")
@@ -283,8 +288,7 @@ export default {
               Authorization: `Bearer ${this.token}`,
             },
           })
-          .then(function (response) {
-            console.log(response);
+          .then(function () {
             document.querySelector("#text").value = null;
             self.getPost();
           })
@@ -293,6 +297,7 @@ export default {
           });
       }
     },
+
     liked() {
       const self = this;
       axios
@@ -310,6 +315,7 @@ export default {
           console.log(error);
         });
     },
+
     deletePost(postId, authorId) {
       const self = this;
       if (this.userId === authorId || (self.user && self.user.admin)) {
@@ -327,6 +333,7 @@ export default {
           });
       }
     },
+
     like(currentPostId) {
       const self = this;
       axios
@@ -343,6 +350,7 @@ export default {
           console.log(error);
         });
     },
+
     deleteComment(id, authorId, currentPostId) {
       const self = this;
       if (this.userId === authorId || (self.user && self.user.admin)) {
@@ -378,25 +386,37 @@ export default {
               headers: { Authorization: `Bearer ${this.token}` },
             }
           )
-          .then(function (response) {
-            console.log(response);
-            let pathClass, pathInput;
-            if (event.path[2].children[3].matches(".react")) {
-              pathClass = event.path[2].children[4];
-              pathInput = event.path[2].children[5].children[0];
-            } else {
-              pathClass = event.path[2].children[3];
-              pathInput = event.path[2].children[4].children[0];
+          .then(function () {
+            const path =
+              event.path || (event.composedPath && event.composedPath());
+            if (path) {
+              const target = path[2];
+              if (target) {
+                let pathClass, pathInput;
+                if (target.children[3]?.matches?.(".react")) {
+                  pathClass = target.children[4];
+                  pathInput = target.children[5]?.children[0];
+                } else {
+                  pathClass = target.children[3];
+                  pathInput = target.children[4]?.children[0];
+                }
+                if (pathClass) {
+                  pathClass.classList.remove("disp");
+                }
+                if (pathInput) {
+                  pathInput.value = ""; // Vidage de l'input
+                }
+              }
             }
-            pathClass.classList.remove("disp");
-            pathInput.value = null;
+            self.newComment = ""; // Effacer le contenu de la variable newComment
             self.getPost();
           })
           .catch(function (error) {
-            console.log(error);
+            console.log("Erreur lors de l'envoi du commentaire :", error); // Ajout du log
           });
       }
     },
+
     getPost() {
       if (document.cookie) {
         this.token = document.cookie
@@ -434,7 +454,7 @@ export default {
     },
   },
   mounted() {
-    (this.userId = document.cookie
+    this.userId = document.cookie
       ? CryptoJS.AES.decrypt(
           document.cookie
             .split("; ")
@@ -442,13 +462,13 @@ export default {
             .split("=")[1],
           this.$store.state.CryptoKey
         ).toString(CryptoJS.enc.Utf8)
-      : null),
-      (this.token = document.cookie
-        ? document.cookie
-            .split("; ")
-            .find((row) => row.startsWith("user-token="))
-            .split("=")[1]
-        : null);
+      : null;
+    this.token = document.cookie
+      ? document.cookie
+          .split("; ")
+          .find((row) => row.startsWith("user-token="))
+          .split("=")[1]
+      : null;
     const self = this;
     axios
       .post(
@@ -478,7 +498,7 @@ export default {
   },
 };
 </script>
-<!-- eslint-disable -->
+
 <style lang="scss" scoped>
 @import "../assets/css/post.scss";
 </style>
