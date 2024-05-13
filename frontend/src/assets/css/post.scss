@@ -161,14 +161,17 @@
 /* Styles pour le message de suppression des posts */
 .deletePostMessage {
   position: absolute;
+  height: 20px;
   right: 10px;
-  top: 50%;
+  top: 12px;
+  cursor: pointer;
 }
 
 /* Styles pour le texte des commentaires */
 .commentText {
   margin-left: 10px;
   margin-right: 10px;
+  margin-bottom: 0;
   color: #091f43;
 }
 
@@ -237,6 +240,12 @@
   height: auto;
 }
 
+/* Styles pour les commentaires */
+#comment {
+  border-radius: 20px;
+  background-color: #f0f2f5;
+}
+
 /* Styles pour chaque commentaire */
 .commentaire {
   background-color: #f0f2f5;
@@ -244,9 +253,7 @@
   display: inline-block;
   margin-bottom: 10px;
   position: relative;
-  padding-top: 10px;
-  padding-left: 10px;
-  padding-right: 20px;
+  padding: 10px 40px 10px 10px;
 }
 
 /* Media queries */
